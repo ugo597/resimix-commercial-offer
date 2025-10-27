@@ -18,7 +18,7 @@ const fs = require('fs');
 
 // Resimix Logo Configuration
 const LOGO_CONFIG = {
-  url: "https://future-fit-career-accelerator.s3.eu-central-1.amazonaws.com/ResimixAssets/Resimix.png",
+  localPath: "./Resimix.png",  // Local logo file
   width: 200,   // Width in pixels
   height: 80,   // Height in pixels (adjust based on actual logo aspect ratio)
   useTextFallback: false,  // Set to true to use text placeholder if logo fails
@@ -158,7 +158,7 @@ function createHeader() {
 }
 
 /**
- * Create logo from URL or use text fallback
+ * Create logo from local file or use text fallback
  */
 async function createLogo() {
   if (LOGO_CONFIG.useTextFallback) {
@@ -177,26 +177,8 @@ async function createLogo() {
   }
 
   try {
-    // Import required modules for image handling
-    const https = require('https');
-    const http = require('http');
-
-    // Download logo from URL
-    const logoBuffer = await new Promise((resolve, reject) => {
-      const protocol = LOGO_CONFIG.url.startsWith('https') ? https : http;
-
-      protocol.get(LOGO_CONFIG.url, (response) => {
-        if (response.statusCode !== 200) {
-          reject(new Error(`Failed to download logo: ${response.statusCode}`));
-          return;
-        }
-
-        const chunks = [];
-        response.on('data', (chunk) => chunks.push(chunk));
-        response.on('end', () => resolve(Buffer.concat(chunks)));
-        response.on('error', reject);
-      }).on('error', reject);
-    });
+    // Read logo from local file
+    const logoBuffer = fs.readFileSync(LOGO_CONFIG.localPath);
 
     // Create paragraph with logo image
     const { ImageRun } = require('docx');
@@ -215,7 +197,7 @@ async function createLogo() {
       ],
     });
   } catch (error) {
-    console.warn('⚠ Failed to load logo from URL:', error.message);
+    console.warn('⚠ Failed to load logo from file:', error.message);
     console.warn('  Using text fallback instead');
 
     // Fallback to text if logo fails
@@ -930,7 +912,7 @@ async function generateOffer() {
   console.log(`  Prodotti: ${offerData.products.length}`);
   console.log(`  Numero offerta: ${offerData.offerNumber}`);
   console.log(`  Totale: ${offerData.totals.totaleOfferta}`);
-  console.log(`  Logo: ${LOGO_CONFIG.useTextFallback ? 'Text fallback' : 'Resimix logo from URL'}`);
+  console.log(`  Logo: ${LOGO_CONFIG.useTextFallback ? 'Text fallback' : `Resimix logo from ${LOGO_CONFIG.localPath}`}`);
 
   return filename;
 }
