@@ -1,17 +1,25 @@
 # How to Upload Your Resimix Commercial Offer Skill
 
-## Quick Start
+## ⚠️ IMPORTANT: Use the Correct Branch
 
-Your skill is now properly structured and ready to upload!
+**This skill is properly structured on branch: `claude/fix-repository-upload-011CUXaMstch9NkyJyLa4EAs`**
+
+DO NOT download from the main branch - it has the old, incorrect structure!
+
+## Quick Start - Upload Now!
+
+**A ready-to-upload ZIP file has been created: `resimix-commercial-offer.zip`**
+
+This ZIP file is in the root of this repository and contains the correct structure.
 
 ## Directory Structure ✅
 
 ```
-resimix-commercial-offer/
-├── SKILL.md                    (Required - main skill instructions)
-├── README.md                   (Optional - user guide)
-├── generate-resimix-offer.js   (Optional - executable script)
-└── examples/                   (Optional - reference materials)
+resimix-commercial-offer.zip contains:
+├── SKILL.md                    (✅ At root level - Required)
+├── README.md                   (✅ Optional - user guide)
+├── generate-resimix-offer.js   (✅ Optional - executable script)
+└── examples/                   (✅ Optional - reference materials)
     ├── Offerta_RESIMIX_OF172-25_RAILWAY.docx
     ├── RESIMIX_Offerta_Template_Oct26.docx
     └── Resimix.png
@@ -19,12 +27,11 @@ resimix-commercial-offer/
 
 ## Upload Methods
 
-### Option 1: Upload to Claude.ai (Recommended for End Users)
+### Option 1: Upload to Claude.ai (Recommended - Easiest!)
 
-1. **Create a ZIP file**:
-   ```bash
-   zip -r resimix-commercial-offer.zip SKILL.md README.md generate-resimix-offer.js examples/
-   ```
+1. **Download the pre-made ZIP file**:
+   - File: `resimix-commercial-offer.zip` (in this repository root)
+   - Already properly structured and ready to upload!
 
 2. **Upload via Claude.ai**:
    - Go to https://claude.ai
