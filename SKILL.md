@@ -1,9 +1,6 @@
 ---
 name: resimix-commercial-offer
 description: "Skill for creating professional commercial offers for Resimix products. Use this skill when generating quotations, price proposals, or commercial offers for Resimix customers."
-version: 1.0
-author: Ugo Bot - Future of Work Lab
-license: Proprietary
 ---
 
 # Resimix Commercial Offer Generator
